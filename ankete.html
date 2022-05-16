@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FP Ankete</title>    
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- style -->
+    <link rel="stylesheet" href="ankete.css" />
+    <!-- script za piecharts i drawcharts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">google.charts.load('current', {packages: ['corechart']});</script>
+    <!-- script za stampanje pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+    <!-- script -->
+    <script src="ankete.js" defer></script>
+  </head>
+  <body>  
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Ankete</a>
+        </div>     
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawChart1()">Grafikon 1</button> 
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawChart2()">Grafikon 2</button> 
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawChart3()">Grafikon 3</button> 
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawBarChart1()">Bar Chart 1</button> 
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawBarChart2()">Bar Chart 2</button> 
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawBarChart3()">Bar Chart 3</button> 
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawChart4()">Grafikon 4</button>
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawChart5()">Grafikon 5</button>
+      <button class="btn btn-primary navbar-btn btn-querry" onclick="drawChart6()">Grafikon 6</button>
+      <button class="btn btn-danger btn-download" id="download">Prebaci u PDF</button>
+      </div>
+    </nav>
+    <p id="demo0" value="0"></p>
+        
+    <div class="container-fluid" id="container-questions">
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Šta smatrate kao prioritet u životu?</p>
+      <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions shadow-none">Finansijska sigurnost</button>
+      <div class="col-sm-1"><input class="form-control" id="demo1" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Zdravlje</button>
+      <div class="col-sm-1"><input class="form-control" id="demo2" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Školovanje dece</button>
+      <div class="col-sm-1"><input class="form-control" id="demo3" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Novac mi predstavlja:</p>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Život bez briga</button>
+      <div class="col-sm-1"><input class="form-control" id="demo4" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Sigurnost za moju porodicu</button>
+      <div class="col-sm-1"><input class="form-control" id="demo5" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Mogućnost stvaranja još više novca</button>
+      <div class="col-sm-1"><input class="form-control" id="demo6" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Rizik prihvatam ako:</p>
+     <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Imam od toga koristi</button>
+      <div class="col-sm-1"><input class="form-control" id="demo7" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Ne rizikujem</button>
+      <div class="col-sm-1"><input class="form-control" id="demo8" type="text" value="0"></div>
+    </div> 
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Sa njim ne ugoržavam svoju porodicu</button>
+      <div class="col-sm-1"><input class="form-control" id="demo9" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">U poslovnom životu najviše mi znači:</p>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Priznanje od strane pretpostavljenog </button>
+      <div class="col-sm-1"><input class="form-control" id="demo10" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Nagrađivanje</button>
+      <div class="col-sm-1"><input class="form-control" id="demo11" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Dugoročno radno mesto</button>
+      <div class="col-sm-1"><input class="form-control" id="demo12" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Kod stvaranja kapitala:</p>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Izbor prepuštam stručnjacima</button>
+      <div class="col-sm-1"><input class="form-control" id="demo13" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Presudna je najviša dobit</button>
+      <div class="col-sm-1"><input class="form-control" id="demo14" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary col-sm-2 btn-questions">Sigurnost na prvom mestu</button>
+      <div class="col-sm-1"><input class="form-control" id="demo15" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Da li znate šta je program osiguranja života?</p>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Da, imam polisu osiguranja života</button>
+      <div class="col-sm-1"><input class="form-control" id="demo16" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Da,ali nemam polisu osig.života</button>
+      <div class="col-sm-1"><input class="form-control" id="demo17" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Ne znam</button>
+      <div class="col-sm-1"><input class="form-control" id="demo18" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Koje inforamcije su Vama najvažnije da biste se odlučili za određenu osiguravajuću kuću?</p>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Duga tradicija u osiguranju života</button>
+      <div class="col-sm-1"><input class="form-control" id="demo19" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Veći broj nekretnina i posl.zgrada</button>
+      <div class="col-sm-1"><input class="form-control" id="demo20" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Efikasno izvršavanje obaveza</button>
+      <div class="col-sm-1"><input class="form-control" id="demo21" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Da li ste čuli za Akcionarsko društvo za osiguranje GPBB?</p>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Ne, nisam nikada čuo</button>
+      <div class="col-sm-1"><input class="form-control" id="demo22" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Čuo sam ali ne znam o čemu se radi</button>
+      <div class="col-sm-1"><input class="form-control" id="demo23" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Čuo sam,upoznat sam sa programom</button>
+      <div class="col-sm-1"><input class="form-control" id="demo24" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Kada pomislite na životno osiguranje, ono što Vas opredeljuje za njega je:</p>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Briga o porodici i deci</button>
+      <div class="col-sm-1"><input class="form-control" id="demo25" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Bolji način štednje nego u banci</button>
+      <div class="col-sm-1"><input class="form-control" id="demo26" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-warning col-sm-2 btn-questions">Mogućnost da mi posluži za kredit</button>
+      <div class="col-sm-1"><input class="form-control" id="demo27" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Koji iznos mislite da će Vam trebati na mesečnom nivou?</p>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">200 evra</button>
+      <div class="col-sm-1"><input class="form-control" id="demo28" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">500 evra</button>
+      <div class="col-sm-1"><input class="form-control" id="demo29" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Više od 500 evra</button>
+      <div class="col-sm-1"><input class="form-control" id="demo30" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Da li štedite za penziju?</p>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Da</button>
+      <div class="col-sm-1"><input class="form-control" id="demo31" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Ne</button>
+      <div class="col-sm-1"><input class="form-control" id="demo32" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Koliki iznos ste spremni da investirate godišnje za bezbrižnu penziju?</p>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">250 evra</button>
+      <div class="col-sm-1"><input class="form-control" id="demo33" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">500 evra</button>
+      <div class="col-sm-1"><input class="form-control" id="demo34" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Više od 500 evra</button>
+      <div class="col-sm-1"><input class="form-control" id="demo35" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Da li vam se svideo današnji razgovor?</p>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Da</button>
+      <div class="col-sm-1"><input class="form-control" id="demo36" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Ne</button>
+      <div class="col-sm-1"><input class="form-control" id="demo37" type="text" value="0"></div>
+    </div> 
+    </div>
+    
+    <div class="container-fluid row">
+      <p class="col-sm-3">Da li ste zainteresovani da Vas kontaktira ovlašćeni zastupnik?</p>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Da</button>
+      <div class="col-sm-1"><input class="form-control" id="demo38" type="text" value="0"></div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success col-sm-2 btn-questions">Ne</button>
+      <div class="col-sm-1"><input class="form-control" id="demo39" type="text" value="0"></div>
+    </div>
+    </div>
+    
+    <div id="anketa-stampa"  class="container-fluid" style = "text-align: justify; font-family: Georgia, serif;">
+    <div class="row">
+    <h4>ИЗВЕШТАЈ О СПРОВЕДЕНОМ ИСТРАЖИВАЊУ ТРЖИШТА</h4> 
+    <h4>ДРУШТВО ЗА ЗАСТУПАЊЕ У ОСИГУРАЊУ ИНИТЕХ ДОО БЕОГРАД</h4> 
+    </div>
+    <div class="row">
+    <p contenteditable="true">Од месеца октобра до месеца децембра, 2020. године, Друштво за заступање у осигурању ИНИТЕХ доо Београд (у даљем тексту: ИНИТЕХ) је спровело истраживање тржишта осигурања за потребе Акционарског друштва за осигурање Београд. Истраживање је спроведено путем анкетирања грађана. Циљ истраживања у наведеном тромесечју је стицање сазнања о информисаности грађана о програмима за осигурање живота, као и о осигуравајућем друштву.
+    У наведеном периоду ИНИТЕХ je спровео 100 анкета, од чега је  98% испитаника по извршеном анкетирању указало поверење Акционарском друштву за осигурање.
+    </p> 
+    </div>
+    
+    <div class="row">
+    <h4>1.  Приоритети и одговорност за будућност</h4> 
+    <p contenteditable="true">Као приоритет у животу, 94% испитаника је изабрало здравље и да им новац представља сигурност за породицу.</p> 
+    </div>
+    <div class="row">
+    <div id="piechart1" class="col-sm-6"></div>
+    </div>    
+    
+    <div class="row">
+    <div id="piechart2" class="col-sm-6"></div>
+    </div>    
+    
+    <div class="row">
+    <h4>2.  Битни елементи код стварања капитала</h4> 
+    <p contenteditable="true">Испитаници су у највећем броју код стварања капитала као најбитнији елемент изабрачи сигурност.
+    1/3 испитаника се одлучила да избор препусти стручним лицима или су навели као приоритет добит.
+    </p> 
+    </div>
+    <div class="row">
+    <div id="piechart3" class="col-sm-6"></div>
+    </div>
+    
+    <div class="row">
+    <h4>3.  Информисаност тржишта о програму за осигурање живота</h4> 
+    <p contenteditable="true">Као резултат добијених одговора на ово питање, утврђено је да  приближно 40% испитаника поседује информације о програму за осигурање живота, али да нема закључену полису осигурања живота.
+    Утврђено је, такође, да скоро пола испитаника већ има полису осигурања живота, а да око 11% испитаника није уопште информисан о програму за осигурање живота.
+    </p> 
+    </div>
+    <div class="row">
+    <div id="drawchart1" style = "width: 550px; height: 350px; margin: 0 auto"></div>
+    </div>
+    
+    <div class="row">
+    <h4>4.  Одлучујући елементи приликом избора осигуравајућег друштва</h4> 
+    <p contenteditable="true">Преко 50% испитаника сматра да пресудан значај има дуга традиција у осигурању живота</p> 
+    </div>
+    <div class="row">
+    <div id="drawchart2" style = "width: 550px; height: 350px; margin: 0 auto"></div>
+    </div>
+    
+    <div class="row">
+    <h4>5.  Информисаност испитаника о осигурању</h4> 
+    <p contenteditable="true">Преко 50% испитаника је информисано о осигуравајућем друштву или упознато са програмима</p> 
+    </div>
+    <div class="row">
+    <div id="drawchart3" style = "width: 550px; height: 350px; margin: 0 auto"></div>
+    </div>
+    
+    
+    <div class="row">
+    <h4>6.  Планови испитаника</h4> 
+    <p>Износ потребан на месечном нивоу - Инвестирање за безбрижну пензију</p> 
+    </div>
+    <div class="row"  style = "height: 360px;">
+    <div id="piechart4" class="col-sm-6"></div>
+    </div>
+    <div class="row" style = "height: 360px;">
+    <div id="piechart5" class="col-sm-6"></div>
+    </div>
+    <div class="row">
+    <p contenteditable="true">Велики број испитаника сматра да ће им бити потребно 500 евра на месечном нивоу али спремност за инвестирање за безбрижну пензију није у складу са потребама. Највећи број испитаника је спреман годишње да инвестира 500 евра.</p> 
+    </div>
+    
+    <div class="row">
+    <h4>7.  Број испитаника који тренутно штеде за пензију</h4> 
+    </div>
+    <div class="row">
+    <div id="piechart6" class="col-sm-6"></div>
+    </div>
+    <div class="row">
+    <p contenteditable="true">Након извршеног истраживања у периоду од октобра до децембра 2020. године, сви испитаници су се изјаснили да им се допао разговор и да су сагласни да их контактира заступник како би се информисали о тарифама и закључили уговор о осигурању.</p> 
+    </div>
+    <br><br><br><br><br>
+    <div class="row">
+    <p contenteditable="true" class="col-sm-9">Датум 05.04.2021</p>
+    <p class="col-sm-3">ИНИТЕХ доо</p> 
+    </div>
+    </div>
+    </div>
+
+  </body>
+</html>

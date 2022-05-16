@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: cadetblue;
+    color: white;
+}
+
+.navbar {
+    display: none;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar a{
+    background-color:  #333;
+    cursor: pointer;
+}
+
+.navbar-show {
+    display: block;
+}
+
+.image {
+    display: block;
+    margin-top: 100px;
+    margin-left: 10%;
+    padding: 40px;    
+}
+
+.pocenta-slika{
+    height: auto;
+    width: 50vw;
+    opacity: 0.1;    
+    filter: contrast(0%);
+    transition: 1200ms ease-in-out;
+}
+
+.animacija {
+    transform: translateX(-100px);     
+    filter: contrast(250%);
+    opacity: 0.5;  
+}
+
+.stampanje-ugovora {
+    display: none;
+    flex-direction: column;    
+}
+
+.stampanje-obrazaca {
+    display: none;
+}
+
+.stampanje-obrazaca .paket  {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+}
+
+.stampanje-obrazaca .paket a {
+    width: 95%;
+    background-color: rgb(21, 65, 21);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    height: 60px;
+    border-radius: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.stampanje-obrazaca .obrasci  {
+    display: grid;
+    grid-template-columns:  repeat(5, auto);
+}
+
+.stampanje-obrazaca .obrasci a {
+    width: 95%;
+    background-color: rgb(98, 173, 98);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    height: 60px;
+    border-radius: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stampanje-obrazaca .seminari  {
+    display: grid;
+    grid-template-columns:  repeat(6, auto);
+}
+
+.stampanje-obrazaca .seminari a {
+    width: 95%;
+    background-color: rgb(108, 153, 108);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    height: 60px;
+    border-radius: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.stampanje-obrazaca .stete  {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+}
+
+.stampanje-obrazaca .stete a {
+    width: 95%;
+    background-color: forestgreen;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    height: 60px;
+    border-radius: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.ugovori {
+    display: none;
+}
+
+select {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 35vw;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: cornsilk;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    outline: none;
+    cursor: pointer;
+}
+
+input {
+    background-color: lightyellow;
+    max-width: 35vw;
+    border-radius:5px;
+    padding: 5px;
+    outline: none;
+}
+
+input:focus{
+    background-color: blanchedalmond;
+}
+
+button {
+    margin-top: 20px;
+    background-color: brown;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    outline: none;
+    font-size: 1.2rem;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+button:active, a:active {
+    box-shadow: 0;
+    transform: translate(2px, 2px);
+}
+
+a {
+    margin-top: 8px;
+    background-color: rgb(110, 80, 80);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    text-decoration: none;
+    padding: 5px;
+    width: max-content;
+    height: max-content;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+a:hover {
+    opacity: 80%;
+    color: antiquewhite;
+}
+
+hr {
+    width: 100%;
+}
+
+.full-screen-buttons
+{
+    float:right;
+    margin: 0;
+    padding: 0;
+    padding-right: 5px;
+}
+
+.close {
+    display: none;
+}
+
+@media screen and (max-width: 420px) {
+    img{  
+        width: 85%;
+    }
+    .stampanje-obrazaca .paket  {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+    }
+    .stampanje-obrazaca .obrasci  {
+        display: grid;
+        grid-template-columns:  repeat(2, auto);
+    }
+    .stampanje-obrazaca .seminari  {
+        display: grid;
+        grid-template-columns:  repeat(2, auto);
+    }
+    .stampanje-obrazaca .stete  {
+        display: grid;
+        grid-template-columns:  repeat(2, auto); 
+    }
+}
+
+@media screen and (max-width: 920px) and (min-width: 421px) {
+    img{  
+        width: 85%;
+    }
+    .stampanje-obrazaca .paket  {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+    }
+    .stampanje-obrazaca .obrasci  {
+        display: grid;
+        grid-template-columns:  repeat(3, auto);
+    }
+    .stampanje-obrazaca .seminari  {
+        display: grid;
+        grid-template-columns:  repeat(3, auto);
+    }
+    .stampanje-obrazaca .stete  {
+        display: grid;
+        grid-template-columns:  repeat(3, auto); 
+    }
+}
+
+
