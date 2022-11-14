@@ -1,6 +1,6 @@
-let datum = new Date().toLocaleDateString('de-DE');
-document.getElementById("inputPocetakUgovora").value = datum;
-document.getElementById("inputStampaUgovora").value = datum;
+//let datum = new Date().toLocaleDateString('de-DE');
+//document.getElementById("inputPocetakUgovora").value = datum;
+//document.getElementById("inputStampaUgovora").value = datum;
 
 const pocetnaNav = document.querySelector('#pocetnaNav')
 const ugovoriNav = document.querySelector('#ugovoriNav')

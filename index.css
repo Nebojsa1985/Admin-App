@@ -52,8 +52,26 @@ body {
 
 .stampanje-ugovora {
     display: none;
-    flex-direction: column;    
+    flex-direction: column;   
+    justify-content: center;
+    align-items: center; 
 }
+
+.stampanje-ugovora input, .stampanje-ugovora select,.stampanje-ugovora a {
+    max-width: 80vw;
+    width: 1000px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 6px;   
+}
+
+.stampanje-ugovora button {
+    max-width: 80vw;
+    width: 1000px;
+    text-align: center;
+    font-weight: bolder;
+} 
 
 .stampanje-obrazaca {
     display: none;
@@ -76,7 +94,6 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
 
 .stampanje-obrazaca .obrasci  {
     display: grid;
@@ -236,6 +253,20 @@ hr {
         display: grid;
         grid-template-columns:  repeat(2, auto); 
     }
+    .stampanje-ugovora {
+        justify-content: center;
+        align-items: center;
+    }
+    .stampanje-ugovora input, .stampanje-ugovora select,.stampanje-ugovora a {
+        max-width: 80vw;
+        width: 500px;
+        text-align: center;
+        font-size: 15px;
+        padding: 4px;
+    }
+    .pocenta-slika{
+        width: 110vw;
+    }
 }
 
 @media screen and (max-width: 920px) and (min-width: 421px) {
@@ -257,6 +288,21 @@ hr {
     .stampanje-obrazaca .stete  {
         display: grid;
         grid-template-columns:  repeat(3, auto); 
+    }
+    .stampanje-ugovora {
+        justify-content: center;
+        align-items: center;
+    }
+    .stampanje-ugovora input, .stampanje-ugovora button,.stampanje-ugovora select,.stampanje-ugovora a {
+        max-width: 80vw;
+        width: 500px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bolder;
+        padding: 10px;
+    }
+    .pocenta-slika{
+        width: 110vw;
     }
 }
 
